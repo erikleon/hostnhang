@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="copyright" content="Copyright (c) 2018 Host'n'Hang. All Rights Reserved.">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Host&lsquo;n&rsquo;Hang</title>
-  <link href="https://fonts.googleapis.com/css?family=Arvo|Montserrat" rel="stylesheet">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-36347110-6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+	<meta charset="utf-8">
+	<meta name="copyright" content="Copyright (c) 2018 Host'n'Hang. All Rights Reserved.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Host&lsquo;n&rsquo;Hang</title>
+	<link href="https://fonts.googleapis.com/css?family=Arvo|Montserrat" rel="stylesheet">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-36347110-6"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
 
-    gtag('config', 'UA-36347110-6');
-  </script>
+		gtag('config', 'UA-36347110-6');
+</script>
 
 </head>
-<body style="background-color:#FAFAF6;text-align:center;font-family:'Arvo',sans-serif">
-  <h1 style="font-family:'Montserrat',sans-serif;color:#3D6CB9">Host&lsquo;n&rsquo;Hang</h1>
-  <h3 style="font-family:'Arvo',sans-serif">Your monthly hosted experience</h3>
-  <p>Next Host&lsquo;n&rsquo;Hang on:</p>
-  <div id="next">
-    <!--
-    <p style="color:#00D1FF">April, 21<span>st</span> 2018</p>
-    <p>3pm <a id="location" target="_blank" href="https://www.google.com/maps/place/40%C2%B046'48.3%22N+73%C2%B057'59.8%22W/@40.7800814,-73.9841207,14z/data=!3m1!4b1!4m5!3m4!1s0x0:0x0!8m2!3d40.7800833!4d-73.9666111">SE corner</a> of the Central Park Great Lawn</p>
-    <h2 id="countdown"></h2>
-     -->
-    <p>EXPIRED</p><p>Check back next month</p>
-  </div>
-  <script>
+<body style="background-color:#FAFAF6">
+	<nav>
+		<h1 style="font-family:'Montserrat',sans-serif;color:#3D6CB9">Host&lsquo;n&rsquo;Hang</h1>
+	</nav>
+	<section style="text-align:center;font-family:'Arvo',sans-serif">
+		<h3>Your monthly hosted experience</h3>
+		<p>Next Host&lsquo;n&rsquo;Hang:</p>
+		<div id="next">
+			<p style="color:#00D1FF">7pm May, 25<span>st</span> 2018</p>
+			<p id="location">check back in day of for location announcement</p>
+			<h2 id="countdown"></h2>
+		</div>
+	</section>
 
-    var hostnhang = new Date("Apr 21, 2018 15:00:00").getTime();
+	<script>
 
-    // Update the count down every 1 second
-    //var x = setInterval(function() {
+	var hostnhang = new Date("May 25, 2018 19:00:00").getTime();
 
-      //var now = new Date().getTime();
+	// Update the count down every 1 second
+	var x = setInterval(function() {
 
-      //var distance = hostnhang - now;
+		var now = new Date().getTime();
 
-      //var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      //var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      //var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+		var distance = hostnhang - now;
 
-      // document.getElementById("countdown").innerHTML = hours + "h "
-      //+ minutes + "m " + seconds + "s ";
+		var days = Math.floor((distance % (1000 * 60 * 60 * 24 * 24)) / (1000 * 60 * 60 * 24));
+		var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+		var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      //if (distance < 0) {
-        //clearInterval(x);
-        //document.getElementById("next").innerHTML = "<p>EXPIRED</p><p>Check back next month</p>";
-      //}
-    //}, 1000);
+		document.getElementById("countdown").innerHTML = days + "d " + hours + "h "
+		+ minutes + "m " + seconds + "s ";
 
-    var locationLink = document.getElementById("location");
+		if (distance < 0) {
+			clearInterval(x);
+			document.getElementById("next").innerHTML = "<p>bars dummy</p>";
+		}
+	}, 1000);
 
-    locationLink.addEventListener("click", function() {
-      gtag("send", "event", "Location Link", "click", "Checking Event Loation", document.getElementById("countdown").innerHTML);
-      console.log("click");
-    });
+	var locationLink = document.getElementById("location");
+
+	locationLink.addEventListener("click", function() {
+		gtag("send", "event", "Location Link", "click", "Checking Event Loation", document.getElementById("countdown").innerHTML);
+		console.log("click");
+	});
 
   </script>
+  <!-- site build and maintained by erikkarwatowski.com -->
 </body>
 </html>
